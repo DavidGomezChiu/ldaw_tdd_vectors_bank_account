@@ -17,37 +17,58 @@ describe('Bank account tests', () => {
             assert.equal(0,bankAccount_1.current(0));
         });
     });
-    describe('Append', () => {
+    describe('Append', () => {        
         it('Should add to the account balance',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             assert.equal(addition_1,bankAccount_1.append(addition_1));
         });
         it('Should ignore negative amounts',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             assert.equal(0,bankAccount_1.append(invalid_amount));
         });
     });
     describe('Substract', () => {
         it('Should substract to the account balance',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             assert.equal(-substraction_1,bankAccount_1.substract(substraction_1));
         });
         it('Should ignore negative amounts',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             assert.equal(0,bankAccount_1.substract(invalid_amount));
         });
     });
     describe('Merge', () => {
         it('Should merge the accounts\' histories',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             bankAccount_1.append(addition_1);
             bankAccount_2.substract(substraction_2);
             bankAccount_1.merge(bankAccount_2);
 
-            assert.deepEqual([{addition: addition_1},{substraction:substraction_2}], bankAccount_1.history());
+            assert.deepEqual([{operation: 'addition', amount: addition_1},{operation: 'substraction', amount:substraction_2}], bankAccount_1.history());
         });
         it('Should add to the original account balance if the second account\'s balance is positive',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             bankAccount_2.append(addition_2);
             bankAccount_1.merge(bankAccount_2);
 
             assert.equal(addition_2, bankAccount_1.current());
         });
         it('Should substract to the original account balance if the second account\'s balance is negative',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             bankAccount_2.substract(substraction_2);
             bankAccount_1.merge(bankAccount_2);
 
@@ -56,9 +77,12 @@ describe('Bank account tests', () => {
     });
     describe('History', () => {
         it('Should return the transactions performed to an account',() => {
+            bankAccount_1 = new BankAccount();
+            bankAccount_2 = new BankAccount();
+
             bankAccount_1.append(addition_1);
 
-            assert.deepEqual([{addition: addition_1}], bankAccount_1.history());
+            assert.deepEqual([{operation: 'addition', amount: addition_1}], bankAccount_1.history());
         });
     });
 });
