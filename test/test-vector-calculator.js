@@ -1,4 +1,5 @@
 const assert = require('assert');
+const VectorCalculator = require('../app/models/VectorCalculator');
 
 describe('Vector calculator tests', () => {
     let v1 = {x: 4, y: 3};
