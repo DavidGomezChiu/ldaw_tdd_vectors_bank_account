@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/DavidGomezChiu/ldaw_tdd_vectors_bank_account#readme",
   "dependencies": {
-    "mocha": "^7.1.2"
+    "mocha": "^10.2.0"
   }
 }
